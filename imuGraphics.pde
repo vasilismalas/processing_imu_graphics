@@ -6,8 +6,6 @@ float pitchAxisVal;
 float rollAxisVal;
 float yawAxisVal;
 
-boolean portDeviceFlag = false;
-
 // color setup
 color inFill = color(255, 123, 0);
 color vertex = color(255, 177, 108);
@@ -16,7 +14,6 @@ color background = color(21, 27, 25);
 boolean checkAvailableSerialPort() {
   if (Serial.list().length > 0) {
     printArray(Serial.list());
-    portDeviceFlag = true;
     return true;
   } else {
     return false;
@@ -40,13 +37,7 @@ void setup() {
     // SET UP COM POPT TO PULL ARDUINO SERIAL DATA
     String comPort = Serial.list()[0];
     serialPort = new Serial(this, comPort, 115200);
-  }
-}
 
-// DRAW SUPERLOOP
-void draw() {
-  background(background);
-  if (portDeviceFlag) {
     if (!checkAvailableSerialData()) {
       textSize(24);
       fill(inFill);
@@ -56,7 +47,13 @@ void draw() {
     print("ERROR: NO DEVICE DETECTED ON SERIAL PORT");
     exit();
   }
+}
 
+// DRAW SUPERLOOP
+void draw() {
+  background(background);
+
+  // print(serialPort.read());
 
   // text for mouse
   textSize(10);
