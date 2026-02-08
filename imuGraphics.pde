@@ -49,14 +49,14 @@ void setup() {
   }
 }
 
-// DRAW SUPERLOOPasdasdas
+// DRAW SUPERLOOP
 void draw() {
   background(background);
 
   // print(serialPort.read());
-  asdasd
-    // text for mouse
-    textSize(10);
+
+  // text for mouse
+  textSize(10);
   text("MOUSE HORIZONTAL POSITION: ", width/10, 50 );
   text(mouseX, width/10, 70 );
   text("MOUSE VERTICAL POSITION: ", width/10, 100 );
